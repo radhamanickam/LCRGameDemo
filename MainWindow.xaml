@@ -1,0 +1,46 @@
+﻿<Window x:Class="LCRGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LCRGame" xmlns:viewModel="clr-namespace:LCRGame.ViewModel"
+        xmlns:view="clr-namespace:LCRGame.View"
+        mc:Ignorable="d"
+        Title="LCR Game" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModel:PresetViewModel/>
+    </Window.DataContext>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10,-1,10,1">
+            <Label Content="Preset" FontSize="20"/>
+            <ComboBox x:Name="cmbPreset" ItemsSource="{Binding Path=Presets}" DisplayMemberPath="Key" SelectedItem="{Binding Path=SelectedKey}" FontSize="20" />
+            <Separator Height="20" Background="Transparent"/>
+            <Label Content="Number of Players" FontSize="20" />
+            <TextBox x:Name="txtPlayers" Text="{Binding Path=SelectedValue.Players}" FontSize="20" TextAlignment="Right"/>
+            <Separator Height="20" Background="Transparent"/>
+            <Label Content="Number of Games" FontSize="20" />
+            <TextBox x:Name="txtGames" Text="{Binding Path=SelectedValue.Games}" FontSize="20" TextAlignment="Right"/>
+            <Separator Height="20" Background="Transparent"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="120">
+                <Button x:Name="btnPlay" Content="Play" VerticalAlignment="Center" Width="85" Margin="0 0 10 0" Click="btnPlay_Click" FontSize="20"/>
+                <Button x:Name="btnCancel" Content="Cancel" VerticalAlignment="Center" Width="85" Click="btnCancel_Click" FontSize="20" />
+            </StackPanel>
+            <TextBlock x:Name="txtoutput" />
+        </StackPanel>
+        <GridSplitter Width="5"
+                      HorizontalAlignment="Right"
+                      VerticalAlignment="Stretch"
+                      Background="Black" Grid.Column="1"/>
+        <StackPanel Grid.Column="2">
+            <!--<Canvas Grid.Column="0" x:Name="canGraph" Background="White" Width="300" Height="200" Margin="50,50,50,50"/>-->
+            <view:BasicChart x:Name="gamesChart" Height="325" Width="400" DataCollectionName="ChartData" DisplayMemberLabels="TotalGames" DisplayMemberValues="Turns" StartSkipAt="0" ShowGraphPoints="False"
+                       YLabel="Turns" XLabel="GAMES" YMin="0" YMax="0" DoubleToString="N0" XMin="1"/>
+            <UniformGrid x:Name="gridPlayers" Height="100" Rows="1"/>
+        </StackPanel>
+    </Grid>
+</Window>
