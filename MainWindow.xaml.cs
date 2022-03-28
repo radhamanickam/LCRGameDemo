@@ -29,7 +29,7 @@ namespace LCRGame
         private void ClearOutput()
         {
             gridPlayers.Children.Clear();
-            lineChart.Remove(x => x.IsSelected);
+            lineChart.Clear();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -71,11 +71,10 @@ namespace LCRGame
             if (string.IsNullOrEmpty(txtGames.Text) || string.IsNullOrEmpty(txtPlayers.Text))
             {
                 txtError.Visibility = Visibility.Visible;
-                txtError.Text = "Games and Players are required!";
-                txtError.Foreground = Brushes.Red;
 
                 return;
             }
+            txtError.Visibility = Visibility.Hidden;
 
             ClearOutput();
 

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="130" d:DesignWidth="100">
     <StackPanel>
-        <Path Stroke="Black" StrokeThickness="3">
+        <Path Stroke="Black" StrokeThickness="3" Margin="10, 0, 0, 0">
             <Path.Style>
                 <Style TargetType="Path">
                     <Setter Property="Fill" Value="Transparent" />

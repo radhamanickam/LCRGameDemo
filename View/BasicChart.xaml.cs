@@ -333,6 +333,8 @@ namespace LCRGame.View
 
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
+                if (basicChart.CurveVisibility.Count == 2)
+                    basicChart.CurveVisibility.Clear();
                 basicChart.CurveVisibility.Add(new CheckBoxClass()
                 {
                     BackColor = DistinctColorList[basicChart.CurveVisibility.Count],

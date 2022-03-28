@@ -30,7 +30,7 @@
                 <Button x:Name="btnPlay" Content="Play" VerticalAlignment="Center" Width="85" Margin="0 0 10 0" Click="btnPlay_Click" FontSize="20"/>
                 <Button x:Name="btnCancel" Content="Cancel" VerticalAlignment="Center" Width="85" Click="btnCancel_Click" FontSize="20" />
             </StackPanel>
-            <TextBlock x:Name="txtError" Visibility="Hidden"/>
+            <TextBlock x:Name="txtError" Visibility="Hidden" Text="Games and Players are required!" Foreground="Red"/>
         </StackPanel>
         <GridSplitter Width="5"
                       HorizontalAlignment="Right"
