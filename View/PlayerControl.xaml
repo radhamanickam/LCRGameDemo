@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:local="clr-namespace:LCRGame.View" xmlns:loc="clr-namespace:LCRGame"
+             xmlns:loc="clr-namespace:LCRGame"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
+             d:DesignHeight="130" d:DesignWidth="100">
     <StackPanel>
-        <loc:Arc Stroke="Black" StrokeThickness="3" Height="50" Width="50" Margin="5" StartAngle="300" EndAngle="240" HorizontalAlignment="Center">
-            <loc:Arc.Style>
-                <Style TargetType="loc:Arc">
+        <Path Stroke="Black" StrokeThickness="3">
+            <Path.Style>
+                <Style TargetType="Path">
                     <Setter Property="Fill" Value="Transparent" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding FillColor}" Value="True">
@@ -18,11 +18,61 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </loc:Arc.Style>
-        </loc:Arc>
-        <UniformGrid Rows="1" Columns="3">
-            <Separator Background="Transparent"/>
-            <Border CornerRadius="10" Width="20" Height="20" BorderBrush="Black" BorderThickness="2">
+            </Path.Style>
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="35, 30">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment Size="17,17" RotationAngle="0" IsLargeArc="True" SweepDirection="Clockwise" Point="60,30" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="35, 30">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="35,50" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="60, 30">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="60,50" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="5, 80">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment Size="50,50" RotationAngle="0" IsLargeArc="False" SweepDirection="Clockwise" Point="35, 50" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="60,50">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment Size="50,50" RotationAngle="0" IsLargeArc="False" SweepDirection="Clockwise" Point="95, 80" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="5, 80">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="95, 80" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Grid>
+            <Separator Background="Transparent" HorizontalAlignment="Left"/>
+            <Border CornerRadius="10" Width="20" Height="20" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Background" Value="Transparent" />
@@ -35,7 +85,7 @@
                 </Border.Style>
                 <TextBlock HorizontalAlignment="Center" Text="{Binding Path=NumberOfPlayers}"/>
             </Border>
-            <Border BorderBrush="Transparent">
+            <Border BorderBrush="Black" HorizontalAlignment="Right">
                 <TextBlock Text="Winner" FontSize="9" TextWrapping="Wrap" VerticalAlignment="Center">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
@@ -49,6 +99,6 @@
                     </TextBlock.Style>
                 </TextBlock>
             </Border>
-        </UniformGrid>
+        </Grid>
     </StackPanel>
 </UserControl>

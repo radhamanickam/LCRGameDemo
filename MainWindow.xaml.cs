@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace LCRGame
 {
@@ -27,9 +29,7 @@ namespace LCRGame
         private void ClearOutput()
         {
             gridPlayers.Children.Clear();
-            lineChart.Clear();
-
-            lineChart.Clear();
+            lineChart.Remove(x => x.IsSelected);
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -68,6 +68,15 @@ namespace LCRGame
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtGames.Text) || string.IsNullOrEmpty(txtPlayers.Text))
+            {
+                txtError.Visibility = Visibility.Visible;
+                txtError.Text = "Games and Players are required!";
+                txtError.Foreground = Brushes.Red;
+
+                return;
+            }
+
             ClearOutput();
 
             int players = Convert.ToInt32(txtPlayers.Text);
@@ -106,6 +115,23 @@ namespace LCRGame
             for (int i = 0; i < games; i++)
             {
                 totalValue += turns[i];
+
+                if (turns.Min() == turns[i])
+                {
+                    gamesChart.ShortestTurn = true;
+                    gamesChart.LongestTurn = false;
+                }
+                else if (turns.Max() == turns[i])
+                {
+                    gamesChart.ShortestTurn = false;
+                    gamesChart.LongestTurn = true;
+                }
+                else
+                {
+                    gamesChart.ShortestTurn = false;
+                    gamesChart.LongestTurn = false;
+                }
+
                 newChart.ChartData.Add(new DataPoint() { TotalGames = i, Turns = turns[i] });
             }
 

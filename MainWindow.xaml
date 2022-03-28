@@ -30,17 +30,16 @@
                 <Button x:Name="btnPlay" Content="Play" VerticalAlignment="Center" Width="85" Margin="0 0 10 0" Click="btnPlay_Click" FontSize="20"/>
                 <Button x:Name="btnCancel" Content="Cancel" VerticalAlignment="Center" Width="85" Click="btnCancel_Click" FontSize="20" />
             </StackPanel>
-            <TextBlock x:Name="txtoutput" />
+            <TextBlock x:Name="txtError" Visibility="Hidden"/>
         </StackPanel>
         <GridSplitter Width="5"
                       HorizontalAlignment="Right"
                       VerticalAlignment="Stretch"
                       Background="Black" Grid.Column="1"/>
         <StackPanel Grid.Column="2">
-            <!--<Canvas Grid.Column="0" x:Name="canGraph" Background="White" Width="300" Height="200" Margin="50,50,50,50"/>-->
-            <view:BasicChart x:Name="gamesChart" Height="325" Width="400" DataCollectionName="ChartData" DisplayMemberLabels="TotalGames" DisplayMemberValues="Turns" StartSkipAt="0" ShowGraphPoints="False"
+            <view:BasicChart x:Name="gamesChart" Height="280" Width="400" DataCollectionName="ChartData" DisplayMemberLabels="TotalGames" DisplayMemberValues="Turns" StartSkipAt="0" ShowGraphPoints="False"
                        YLabel="Turns" XLabel="GAMES" YMin="0" YMax="0" DoubleToString="N0" XMin="1"/>
-            <UniformGrid x:Name="gridPlayers" Height="100" Rows="1"/>
+            <UniformGrid x:Name="gridPlayers" Height="130" Rows="1"/>
         </StackPanel>
     </Grid>
 </Window>

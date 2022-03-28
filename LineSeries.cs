@@ -28,5 +28,7 @@ namespace LCRGame
                 SetProperty(ref m_Name, value);
             }
         }
+
+        public bool IsSelected { get; internal set; }
     }
 }

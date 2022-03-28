@@ -4,17 +4,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LCRGame.View
@@ -259,6 +251,24 @@ namespace LCRGame.View
                         Canvas.SetTop(CurvePoint, ListOfChartCurves[k][i].Y - 5);
                         items.Add(CurvePoint);
                     }
+
+                    Ellipse showLabelPoint = new Ellipse();
+                    showLabelPoint.Width = 10;
+                    showLabelPoint.Height = 10;
+                    if (sender.ShortestTurn)
+                    {
+                        showLabelPoint.ToolTip = "Shortest";
+                        showLabelPoint.Fill = Brushes.Purple;
+                    }
+                    if (sender.LongestTurn)
+                    {
+                        showLabelPoint.ToolTip = "Longest";
+                        showLabelPoint.Fill = Brushes.Orange;
+                    }
+
+                    Canvas.SetLeft(showLabelPoint, ListOfChartCurves[k][i].X - 5);
+                    Canvas.SetTop(showLabelPoint, ListOfChartCurves[k][i].Y - 5);
+                    items.Add(showLabelPoint);
                 }
             }
 
@@ -510,6 +520,22 @@ namespace LCRGame.View
         // Using a DependencyProperty as the backing store for ShowGraphPoints.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowGraphPointsProperty =
             DependencyProperty.Register("ShowGraphPoints", typeof(bool),
+                typeof(BasicChart), new PropertyMetadata(false));
+
+        // <summary>
+        /// Gets or sets the binding path of the label.
+        /// </summary>
+        public bool ShortestTurn { get; set; }
+        public static readonly DependencyProperty ShortestTurnProperty =
+            DependencyProperty.Register("ShortestTurn", typeof(bool),
+                typeof(BasicChart), new PropertyMetadata(false));
+
+        // <summary>
+        /// Gets or sets the binding path of the label.
+        /// </summary>
+        public bool LongestTurn { get; set; }
+        public static readonly DependencyProperty LongestTurnProperty =
+            DependencyProperty.Register("LongestTurn", typeof(bool),
                 typeof(BasicChart), new PropertyMetadata(false));
 
         public string DisplayMemberValues

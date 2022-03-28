@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LCRGame
 {
-    public class DataPoint:NotifierBase
+    public class DataPoint : NotifierBase
     {
         private double _totalGames = new int();
         public double TotalGames
